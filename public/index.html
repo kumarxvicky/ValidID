@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f3f5f3">
+    <meta name="description" content="A simple and secure way to register and verify your user identity.">
+    <title>Identity Portal</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Identity Portal home">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span>ValidID<span class="brand-light">fy</span></span>
+        </a>
+        <span class="topbar-note"><span class="status-dot"></span> Private identity portal</span>
+      </header>
+
+      <section class="layout" aria-label="Identity portal">
+        <div class="intro-panel">
+          <div class="intro-copy">
+            <p class="eyebrow">YOUR IDENTITY, IN ONE PLACE</p>
+            <h1>Know who<br>you <span>are.</span></h1>
+            <p class="intro-description">A simple, secure space to create your identity and access it whenever you need.</p>
+          </div>
+          <div class="identity-art" aria-hidden="true">
+            <div class="art-orbit orbit-one"></div>
+            <div class="art-orbit orbit-two"></div>
+            <div class="art-card">
+              <div class="art-card-top"><span class="art-chip"></span><span class="art-line short"></span></div>
+              <div class="art-profile"><div class="art-avatar"></div><div class="art-text"><span></span><span></span></div></div>
+              <div class="art-card-bottom"><span></span><span></span><span></span><span></span></div>
+              <div class="art-check">✓</div>
+            </div>
+            <div class="art-spark spark-one">✳</div>
+            <div class="art-spark spark-two">✦</div>
+          </div>
+          <div class="privacy-note">
+            <span class="lock-icon" aria-hidden="true">⌑</span>
+            <span><strong>Your details stay yours.</strong><br>Passwords are securely hashed before storage.</span>
+          </div>
+        </div>
+
+        <section class="form-panel" aria-live="polite">
+          <div id="auth-view">
+            <div class="form-heading">
+              <div class="mini-mark" aria-hidden="true">i</div>
+              <p class="eyebrow" id="form-eyebrow">WELCOME BACK</p>
+              <h2 id="form-title">Sign in to your<br>identity portal</h2>
+              <p class="form-subtitle" id="form-subtitle">Enter your details to continue.</p>
+            </div>
+
+            <div class="tab-switch" role="tablist" aria-label="Choose an account action">
+              <button class="tab active" id="login-tab" type="button" role="tab" aria-selected="true">Sign in</button>
+              <button class="tab" id="register-tab" type="button" role="tab" aria-selected="false">Create account</button>
+            </div>
+
+            <form id="auth-form" novalidate>
+              <div class="field" id="name-field" hidden>
+                <label for="name">Full name</label>
+                <input id="name" name="name" type="text" autocomplete="name" maxlength="100" placeholder="e.g. Alex Morgan">
+              </div>
+              <div class="field">
+                <label for="email">Email address</label>
+                <input id="email" name="email" type="email" autocomplete="email" maxlength="254" placeholder="you@example.com" required>
+              </div>
+              <div class="field">
+                <div class="field-label-row"><label for="password">Password</label><span id="password-hint" class="field-hint" hidden>At least 10 characters</span></div>
+                <div class="password-wrap">
+                  <input id="password" name="password" type="password" autocomplete="current-password" minlength="10" maxlength="72" placeholder="Enter your password" required>
+                  <button class="show-password" id="toggle-password" type="button" aria-label="Show password">Show</button>
+                </div>
+              </div>
+              <p class="form-message" id="form-message" role="alert" hidden></p>
+              <button class="primary-button" id="submit-button" type="submit"><span>Sign in</span><span class="button-arrow" aria-hidden="true">↗</span></button>
+            </form>
+            <p class="terms-note" id="terms-note">Your account is protected with securely hashed passwords and a private session.</p>
+          </div>
+
+          <div id="dashboard-view" hidden>
+            <div class="dashboard-heading">
+              <div class="mini-mark" aria-hidden="true">✓</div>
+              <p class="eyebrow">IDENTITY VERIFIED</p>
+              <h2 id="welcome-title">Welcome back</h2>
+              <p class="form-subtitle">Your account is active and ready to use.</p>
+            </div>
+            <div class="profile-card">
+              <div class="profile-top"><div class="profile-avatar" id="profile-avatar">A</div><span class="verified-pill"><span></span> Verified</span></div>
+              <div class="profile-name" id="profile-name">Your name</div>
+              <div class="profile-email" id="profile-email">you@example.com</div>
+              <div class="card-divider"></div>
+              <div class="id-row"><div><span class="id-label">YOUR UNIQUE ID</span><code id="public-id">00000000-0000-0000-0000-000000000000</code></div><button class="copy-button" id="copy-id" type="button" aria-label="Copy user ID">Copy</button></div>
+            </div>
+            <p class="dashboard-hint" id="copy-feedback" aria-live="polite">Keep your ID handy when you need to identify your account.</p>
+            <button class="secondary-button" id="logout-button" type="button">Sign out <span aria-hidden="true">↗</span></button>
+          </div>
+
+          <div class="panel-footer"><span>IDENTIFY WITH CONFIDENCE</span><span>● &nbsp; SECURE ACCESS</span></div>
+        </section>
+      </section>
+
+      <footer class="page-footer"><span>© <span id="year"></span> Identify</span><span>Built for clarity. Designed for privacy.</span></footer>
+    </main>
+  </body>
+</html>
